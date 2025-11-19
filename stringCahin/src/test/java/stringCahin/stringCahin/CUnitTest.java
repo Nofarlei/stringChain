@@ -1,19 +1,28 @@
+/*
+    Commit note:
+    Unit test for class C.
+    Purpose:
+    - Validate that C adds the character 'L'.
+    - Use DStub to isolate C from the rest of the chain.
+*/
+
 package stringCahin.stringCahin;
-import org.junit.Test;
+
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class CUnitTest {
-    @Test
-    public void testCWithStub() {
-        // יוצרים סטאב של D
-        DStub stub = new DStub();
-        // יוצרים את C עם הסטאב
-        C c = new C(stub);
 
-        // קוראים ל־C — לא לסטאב!
+    @Test
+    public void testC_AddsL() {
+        // Arrange – use DStub instead of real D
+        DStub dStub = new DStub();
+        C c = new C(dStub);
+
+        // Act
         String result = c.process("HE");
 
-        // מאמתים את הפלט
-        assertEquals("HELX", result);
+        // Assert – expected: "HEL"
+        assertEquals("HEL", result);
     }
 }
