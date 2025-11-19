@@ -32,4 +32,37 @@ public class systemTest {
         // Final: "HELLO"
         assertEquals("HELLO", result);
     }
+
+        @Test
+    public void testFullChain_WithPrefixX() {
+        // Arrange – create real chain
+        E realE = new E();
+        D realD = new D(realE);
+        C realC = new C(realD);
+        B realB = new B(realC);
+        A realA = new A(realB);
+
+        // Act – start the chain with prefix "X"
+        String result = realA.process("X");
+
+        // Assert – expected: "XHELLO"
+        assertEquals("XHELLO", result);
+    }
+
+        @Test
+    public void testFullChain_WithPrefixHI() {
+        // Arrange – create real chain
+        E realE = new E();
+        D realD = new D(realE);
+        C realC = new C(realD);
+        B realB = new B(realC);
+        A realA = new A(realB);
+
+        // Act – start with "HI"
+        String result = realA.process("HI");
+
+        // Assert – expected: "HIHELLO"
+        assertEquals("HIHELLO", result);
+    }
+
 }
