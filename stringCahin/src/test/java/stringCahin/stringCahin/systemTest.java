@@ -1,9 +1,9 @@
 /*
-    Commit note:
-    System test for full chain A → B → C → D.
-    Purpose:
-    - Validate the full end-to-end behavior with real classes.
-    - No stubs are used in this test.
+ Commit note:
+ System test for the full chain A → B → C → D → E.
+ Purpose:
+ - Validate the full end-to-end behavior using all real classes.
+ - No stubs are used in these tests.
 */
 
 package stringCahin.stringCahin;
@@ -15,7 +15,7 @@ public class systemTest {
 
     @Test
     public void testFullChain_ABCD() {
-        // Arrange – create real chain A → B → C → D
+        // Arrange – create the real chain: A → B → C → D
         D realD = new D();
         C realC = new C(realD);
         B realB = new B(realC);
@@ -33,9 +33,9 @@ public class systemTest {
         assertEquals("HELLO", result);
     }
 
-        @Test
+    @Test
     public void testFullChain_WithPrefixX() {
-        // Arrange – create real chain
+        // Arrange – create the full real chain: A → B → C → D → E
         E realE = new E();
         D realD = new D(realE);
         C realC = new C(realD);
@@ -49,9 +49,9 @@ public class systemTest {
         assertEquals("XHELLO", result);
     }
 
-        @Test
+    @Test
     public void testFullChain_WithPrefixHI() {
-        // Arrange – create real chain
+        // Arrange – create the full real chain: A → B → C → D → E
         E realE = new E();
         D realD = new D(realE);
         C realC = new C(realD);
@@ -64,5 +64,4 @@ public class systemTest {
         // Assert – expected: "HIHELLO"
         assertEquals("HIHELLO", result);
     }
-
 }
